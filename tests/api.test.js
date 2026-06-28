@@ -18,7 +18,7 @@ describe('POST /generate', () => {
   });
 
   it('good selection', async () => {
-    const res = await request(app).post('/generate').send({ text: 'a glowing tree at dusk' });
+    const res = await request(app).post('/generate').send({ text: 'hippocampus' });
     console.log(res)
     expect(res.body.success).toBe(true);
     expect(typeof res.body.imageUrl).toBe('string');

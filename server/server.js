@@ -2,11 +2,12 @@ import express from "express";
 import path from "path";
 import cors from "cors";
 import multer from "multer";
-import fs from "fs";
+import fs from "node:fs";
 import { createCanvas } from "canvas";
 import {spawn} from "child_process";
 import {dirname, resolve} from "path";
 import { fileURLToPath } from "url";
+//import * as pdfjsLib from "pdfjs-dist/vendor/pdf.mjs";
 // const express = require('express');
 // const cors = require('cors');
 // const multer = require('multer');
@@ -45,7 +46,6 @@ const py = spawn(config.conda_model, [config.paths.model_loader],
 { cwd: ROOT_DIR });
 
 for (const d of [config.paths.uploads_dir, config.paths.output_dir]) fs.mkdirSync(d, { recursive: true });
-
 // py.stdout.on("data", (d) => console.log("[py]", d.toString()));
 // py.stderr.on("data", (d) => console.error("[py err]", d.toString()));
 

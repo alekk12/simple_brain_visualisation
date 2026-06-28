@@ -9,7 +9,7 @@
   "uploads_dir":"uploads",
   "output_dir":"output",
   "data_dir":"data",
-  "pdf_disp_dir":"..node_modules/pdfjs-dist/build",
+  "pdf_disp_dir":"node_modules/pdfjs-dist/build",
   "model_loader":"..models/load_model.py"
   }
 }
