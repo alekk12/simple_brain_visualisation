@@ -1,12 +1,22 @@
-const express = require('express');
-const cors = require('cors');
-const multer = require('multer');
-const path = require('path');
-const fs = require('fs');
-const { createCanvas } = require("canvas");
-const { spawn } = require("child_process");
+import express from "express";
+import path from "path";
+import cors from "cors";
+import multer from "multer";
+import fs from "fs";
+import { createCanvas } from "canvas";
+import {spawn} from "child_process";
+import {dirname, resolve} from "path";
+import { fileURLToPath } from "url";
+// const express = require('express');
+// const cors = require('cors');
+// const multer = require('multer');
+// const path = require('path');
+// const fs = require('fs');
+// const { createCanvas } = require("canvas");
+// const { spawn } = require("child_process");
 
-const ROOT_DIR = process.env.ROOT_DIR || path.resolve(__dirname, "..");
+const ROOT_DIR = process.env.ROOT_DIR || resolve(dirname(fileURLToPath(import.meta.url)),"..")
+//path.resolve(__dirname, "..");
 
 const config = JSON.parse(
   fs.readFileSync(path.join(ROOT_DIR, "config.json"), "utf8")
@@ -32,7 +42,7 @@ app.use(cors());
 app.use(express.json());
 
 const py = spawn(config.conda_model, [config.paths.model_loader],
-{ cwd: __dirname });
+{ cwd: ROOT_DIR });
 
 for (const d of [config.paths.uploads_dir, config.paths.output_dir]) fs.mkdirSync(d, { recursive: true });
 
@@ -90,6 +100,63 @@ app.post('/generate', async (req, res) => {
   }
 });
 
+function load_model(text, timeoutMs = 15000) {
+  return new Promise((resolve, reject) => {//TO DO show message that text is too long
+    const sanitizedText = text.length > config.max_input ? text.substring(0, config.max_input ) + "..." : text;
+
+    const payload = JSON.stringify({ text: sanitizedText });
+    let buffer = ""; 
+
+    const timer = setTimeout(() => {
+      py.stdout.removeListener("data", handler);
+      reject(new Error("Request to the model timed out"));
+    }, timeoutMs);
+
+    const handler = (chunk) => {
+      buffer += chunk.toString();
+      if (buffer.includes("\n")) {
+        try {
+          const msg = JSON.parse(buffer.trim());
+          clearTimeout(timer);
+          py.stdout.removeListener("data", handler);
+          resolve(msg.result);
+        } catch (e) {
+        }
+      }
+    };
+    //py.stdout.on("data", handler);
+    //py.stdin.write(payload + "\n");
+  });
+}
+
+async function generateImage(text) {
+  const path = require("path");
+  const fs = require("fs");
+  const { createCanvas } = require("canvas");
+
+  const outPath = path.join(config.paths.output_dir, "output.png");
+
+  const canvas = createCanvas(420, 180);
+  const ctx = canvas.getContext("2d");
+
+  ctx.fillStyle = "#ffffff";
+  ctx.fillRect(0, 0, 420, 180);
+
+  ctx.fillStyle = "#444";
+  ctx.font = "20px sans-serif";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillText("Loading...", 210, 90);
+
+  fs.writeFileSync(outPath, canvas.toBuffer("image/png"));
+
+  await load_model(text);
+
+  return `/output/output.png?t=${Date.now()}`;
+}
+
 app.listen(config.port, config.host, () => {
   console.log(`Server ready at http://${config.host}:${config.port}`);
 });
+
+export default app;
