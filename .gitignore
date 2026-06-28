@@ -1,5 +1,7 @@
 #js server skip
 node_modules/
+local.config.json
+package-lock.json
 
 #local_folders
 uploads/

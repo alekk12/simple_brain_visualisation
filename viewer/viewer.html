@@ -1,0 +1,31 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+<title>File Viewer</title>
+<style>
+  html, body { height: 100%; }
+  #bar { position: sticky; top: 0; z-index: 5; display: flex; gap: 16px; align-items: center; padding: 12px 20px; background: var(--bg-bar); border-bottom: 1px solid var(--border); }
+  #bar a { color: var(--text-accent); text-decoration: none; font-weight: 500; }
+  #stage { padding: 24px; display: flex; flex-direction: column; align-items: center; gap: 24px; }
+  .page { position: relative; box-shadow: 0 4px 12px var(--shadow); background: #fff; }
+  .page canvas { display: block; }
+  .textLayer { position: absolute; inset: 0; overflow: hidden; line-height: 1; }
+  .textLayer span { position: absolute; white-space: pre; color: transparent; transform-origin: 0 0; cursor: text; }
+  .textLayer span::selection { background: rgba(80, 140, 255, 0.4); }
+  iframe#html { width: min(900px, 100%); height: 80vh; border: 1px solid var(--border); border-radius: 8px; background: #fff; }
+  #float { position: fixed; z-index: 9999; display: none; background: var(--bg-bar); border: 1px solid var(--border); border-radius: 12px; padding: 8px; box-shadow: 0 10px 30px var(--shadow); max-width: 440px; }
+  #float img { display: block; max-width: 420px; max-height: 420px; border-radius: 6px; }
+  #float .status { font-family: monospace; font-size: 0.8rem; color: var(--text-accent); padding: 8px 4px 4px; }
+</style>
+
+<div id="bar">
+  <a href="/">&larr; Back to files</a>
+  <strong id="title">Loading files...</strong>
+</div>
+<div id="stage"></div>
+<div id="float"><div id="float-img"></div><div class="status" id="status"></div></div>
+<script type="module">
+  import * as pdfjsLib from '/vendor/pdfjs/pdf.mjs';
+  pdfjsLib.GlobalWorkerOptions.workerSrc = '/vendor/pdfjs/pdf.worker.mjs';
+</script>

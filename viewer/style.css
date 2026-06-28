@@ -1,0 +1,29 @@
+:root {
+  color-scheme: light dark;
+  --bg-page: light-dark(#f8f9fa, #121212);
+  --bg-bar: light-dark(#ffffff, #1a1a1a);
+  --bg-card: light-dark(#ffffff, #1e1e1e);
+  --text-main: light-dark(#1a1a1a, #e0e0e0);
+  --text-sub: light-dark(#666666, #a0a0a0);
+  --text-accent: #6d89b7;
+  --border: light-dark(#e0e0e0, #333333);
+  --shadow: light-dark(rgba(0,0,0,0.1), rgba(0,0,0,0.5));
+}
+
+body { 
+  margin: 0; 
+  background: var(--bg-page); 
+  color: var(--text-main); 
+  font-family: system-ui, -apple-system, sans-serif; 
+  line-height: 1.5;
+}
+
+.badge { 
+  font-size: 0.75rem; 
+  padding: 2px 8px; 
+  border-radius: 6px; 
+  background: var(--border);
+  color: var(--text-sub); 
+  text-transform: uppercase; 
+  font-weight: bold;
+}

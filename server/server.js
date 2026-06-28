@@ -12,9 +12,30 @@ const config = JSON.parse(
   fs.readFileSync(path.join(ROOT_DIR, "config.json"), "utf8")
 );
 
+const localConfigPath = path.join(ROOT_DIR, "local.config.json");
+if (fs.existsSync(localConfigPath)) {
+  Object.assign(
+    config,
+    JSON.parse(fs.readFileSync(localConfigPath, "utf8"))
+  );
+}
+
 config.host = process.env.HOST || config.host;
 config.port = Number(process.env.PORT || config.port);
 
 for (const [key, value] of Object.entries(config.paths)) {
   config.paths[key] = path.resolve(ROOT_DIR, value);
 }
+
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+const py = spawn(config.conda_model, [config.paths.model_loader],
+{ cwd: __dirname });
+
+for (const d of [config.paths.uploads_dir, config.paths.output_dir]) fs.mkdirSync(d, { recursive: true });
+
+
+// py.stdout.on("data", (d) => console.log("[py]", d.toString()));
+// py.stderr.on("data", (d) => console.error("[py err]", d.toString()));
