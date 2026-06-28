@@ -28,4 +28,30 @@
   const drop = document.getElementById('drop');
   const input = document.getElementById('file');
   const list = document.getElementById('list');
+  
+  async function refresh() {
+    try {
+      const { files } = await (await fetch('/api/files')).json();
+      list.innerHTML = files.length ? '' : '<li class="empty">No files.</li>';
+      files.forEach(f => {
+        const ext = f.split('.').pop().toLowerCase();
+        const li = document.createElement('li');
+        li.innerHTML = `<span class="badge">${ext}</span><a href="/view?file=${encodeURIComponent(f)}">${f}</a>`;
+        list.appendChild(li);
+      });
+    } catch (e) { list.innerHTML = '<li class="empty">Error while loading files.</li>'; }
+  }
+
+  async function send(files) {
+    const fd = new FormData();
+    for (const f of files) fd.append('files', f);
+    await fetch('/api/upload', { method: 'POST', body: fd });
+    refresh();
+  }
+
+  input.addEventListener('change', () => send(input.files));
+  ['dragover', 'dragenter'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.add('drag'); }));
+  ['dragleave', 'drop'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.remove('drag'); }));
+  drop.addEventListener('drop', e => { if (e.dataTransfer.files.length) send(e.dataTransfer.files); });
+  refresh();
 </script>
