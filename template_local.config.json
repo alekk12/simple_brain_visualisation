@@ -1,4 +1,4 @@
 {
     "conda_model":".../python.exe",
-    "bert_model":"./local_biobert"
+    "bert_model":"./models/local_biobert"
 }

@@ -3,13 +3,13 @@
   "host": "localhost",
   "max_input":4000,
   "conda_model":"default",
-  "bert_model":"local_biobert",
+  "bert_model":"models/local_biobert",
   "paths":{
   "public_dir":"viewer",
   "uploads_dir":"uploads",
   "output_dir":"output",
   "data_dir":"data",
   "pdf_disp_dir":"node_modules/pdfjs-dist/build",
-  "model_loader":"..models/load_model.py"
+  "model_loader":"models/load_model.py"
   }
 }

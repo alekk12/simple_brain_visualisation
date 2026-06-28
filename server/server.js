@@ -46,8 +46,8 @@ const py = spawn(config.conda_model, [config.paths.model_loader],
 { cwd: ROOT_DIR });
 
 for (const d of [config.paths.uploads_dir, config.paths.output_dir]) fs.mkdirSync(d, { recursive: true });
-// py.stdout.on("data", (d) => console.log("[py]", d.toString()));
-// py.stderr.on("data", (d) => console.error("[py err]", d.toString()));
+py.stdout.on("data", (d) => console.log("[py]", d.toString()));
+py.stderr.on("data", (d) => console.error("[py err]", d.toString()));
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, config.paths.uploads_dir),
@@ -57,6 +57,62 @@ const storage = multer.diskStorage({
   },
 });
 const upload = multer({ storage });
+
+
+function loadModel(text, timeoutMs = 15000) {
+  return new Promise((resolve, reject) => {//TO DO show message that text is too long
+    const sanitizedText = text.length > config.max_input ? text.substring(0, config.max_input ) + "..." : text;
+    console.log(sanitizedText)
+    const payload = JSON.stringify({ text: sanitizedText });
+    let buffer = ""; 
+
+    const timer = setTimeout(() => {
+      py.stdout.removeListener("data", handler);
+      reject(new Error("Request to the model timed out"));
+    }, timeoutMs);
+
+    const handler = (chunk) => {
+      buffer += chunk.toString();
+      if (buffer.includes("\n")) {
+        try {
+          const msg = JSON.parse(buffer.trim());
+          clearTimeout(timer);
+          py.stdout.removeListener("data", handler);
+          resolve(msg.result);
+        } catch (e) {
+        }
+      }
+    };
+    py.stdout.on("data", handler);
+    py.stdin.write(payload + "\n");
+  });
+}
+
+async function generateImage(text) {
+  //lazy loading
+  //const path = (await import("node:path")).default;
+  //const fs = (await import("node:fs")).default;
+  //const { createCanvas } = await import("canvas");
+
+  const outPath = path.join(config.paths.output_dir, "output.png");
+  const canvas = createCanvas(420, 180);
+  const ctx = canvas.getContext("2d");
+
+  ctx.fillStyle = "#ffffff";
+  ctx.fillRect(0, 0, 420, 180);
+
+  ctx.fillStyle = "#444";
+  ctx.font = "20px sans-serif";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillText("Loading...", 210, 90);
+
+  fs.writeFileSync(outPath, canvas.toBuffer("image/png"));
+
+  await loadModel(text);
+
+  return `/output/output.png?t=${Date.now()}`;
+}
 
 app.use('/', express.static(config.paths.public_dir));
 app.use('/files', express.static(config.paths.uploads_dir));
@@ -87,7 +143,7 @@ app.post('/generate', async (req, res) => {
     if (!text) {
       return res.status(400).json({ success: false, error: 'No text provided' });
     }
-
+    console.log(text)
     const url = await generateImage(text);
 
     res.json({
@@ -100,60 +156,6 @@ app.post('/generate', async (req, res) => {
   }
 });
 
-function load_model(text, timeoutMs = 15000) {
-  return new Promise((resolve, reject) => {//TO DO show message that text is too long
-    const sanitizedText = text.length > config.max_input ? text.substring(0, config.max_input ) + "..." : text;
-
-    const payload = JSON.stringify({ text: sanitizedText });
-    let buffer = ""; 
-
-    const timer = setTimeout(() => {
-      py.stdout.removeListener("data", handler);
-      reject(new Error("Request to the model timed out"));
-    }, timeoutMs);
-
-    const handler = (chunk) => {
-      buffer += chunk.toString();
-      if (buffer.includes("\n")) {
-        try {
-          const msg = JSON.parse(buffer.trim());
-          clearTimeout(timer);
-          py.stdout.removeListener("data", handler);
-          resolve(msg.result);
-        } catch (e) {
-        }
-      }
-    };
-    //py.stdout.on("data", handler);
-    //py.stdin.write(payload + "\n");
-  });
-}
-
-async function generateImage(text) {
-  const path = require("path");
-  const fs = require("fs");
-  const { createCanvas } = require("canvas");
-
-  const outPath = path.join(config.paths.output_dir, "output.png");
-
-  const canvas = createCanvas(420, 180);
-  const ctx = canvas.getContext("2d");
-
-  ctx.fillStyle = "#ffffff";
-  ctx.fillRect(0, 0, 420, 180);
-
-  ctx.fillStyle = "#444";
-  ctx.font = "20px sans-serif";
-  ctx.textAlign = "center";
-  ctx.textBaseline = "middle";
-  ctx.fillText("Loading...", 210, 90);
-
-  fs.writeFileSync(outPath, canvas.toBuffer("image/png"));
-
-  await load_model(text);
-
-  return `/output/output.png?t=${Date.now()}`;
-}
 
 app.listen(config.port, config.host, () => {
   console.log(`Server ready at http://${config.host}:${config.port}`);

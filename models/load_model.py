@@ -13,6 +13,9 @@ import matplotlib.pyplot as plt
 from pathlib import Path
 from matplotlib.patches import Patch
 
+#TO DO fix hardcoded paths - read from config
+BASE_DIR = Path(__file__).resolve().parent
+
 def get_bert_embedding(text, tokenizer, model, device="cuda"):
     inputs = tokenizer(text, return_tensors="pt", padding=True, truncation=True).to(device)
     with torch.no_grad():
@@ -24,14 +27,14 @@ def get_bert_embedding(text, tokenizer, model, device="cuda"):
     return sum_embeddings / sum_mask
 
 
-def load_atlas(atlas_type, data_dir="../data"):
+def load_atlas(atlas_type, data_dir=f"{BASE_DIR.parent}/data"):
     if atlas_type == "schaefer":
         atlas = datasets.fetch_atlas_schaefer_2018(n_rois=200, data_dir=data_dir)
         return atlas.maps, atlas.labels, None, None
     elif atlas_type == "aal":
-        img_path = os.path.join(data_dir, "AAL3v1.nii")
-        lbl_path = os.path.join(data_dir, "AAL3v1.txt")
-        with open(os.path.join(data_dir, "AAL3v1.json"), 'r') as f:
+        img_path = f"{data_dir}/AAL3v1.nii"
+        lbl_path = f"{data_dir}/AAL3v1.txt"
+        with open(f"{data_dir}/AAL3v1.json", 'r') as f:
             atl_dict = json.load(f)
         img = nib.load(img_path)
         with open(lbl_path, "r") as f:
@@ -71,7 +74,7 @@ def find_top_n_regions(query, tokenizer, model, label_embs, atlas_labels, n=3, d
     top_vals, top_indices = torch.topk(sims, n)
     return [(atlas_labels[i], top_vals[j].item(), i) for j, i in enumerate(top_indices)]
 
-def visualize_probabilistic_results(top_results, atlas_maps, atlas_indices, out_path="../output/output.png"):
+def visualize_probabilistic_results(top_results, atlas_maps, atlas_indices, out_path=f"{BASE_DIR.parent}/output/output.png"):
     #TO DO fix hardcoed paths
     num_regions = len(top_results)
     cmap = plt.colormaps["tab10"].resampled(num_regions)
@@ -98,17 +101,15 @@ def visualize_probabilistic_results(top_results, atlas_maps, atlas_indices, out_
     fig.savefig(out_path, bbox_inches="tight", dpi=300)
     plt.close(fig)
 
-def load_model(model_path="../biobert",emb_path=Path("../models/embeddings.npy"), comp=False,atlas_type="aal",top_reg=5):
+def load_model(model_path=f"{BASE_DIR.parent}/models/local_biobert",emb_path=f"{BASE_DIR.parent}/models/embeddings.npy", comp=False,atlas_type="aal",top_reg=5):
     """load model either from weights or fetch"""
     device = "cuda" if torch.cuda.is_available() else "cpu"
     atlas_maps, atlas_labels, atl_dict, atlas_indices = load_atlas(atlas_type)
     tok = AutoTokenizer.from_pretrained(model_path)
     model = AutoModel.from_pretrained(model_path).to(device)
 
-    if emb_path.is_file():
-        embs = np.asarray(np.load(emb_path, mmap_mode="r"))
-        embs = torch.from_numpy(embs).float()
-        embs = embs.to(device)
+    if Path(emb_path).is_file():
+        embs = torch.from_numpy(np.load(emb_path, mmap_mode="r").copy()).float().to(device)
     else:
         embs= compute_label_embeddings_optimized(atlas_labels, atl_dict,tok, model, device)
         np.save(emb_path, embs.cpu().numpy())
