@@ -1,0 +1,10 @@
+{
+  "port": 3000,
+  "host": "localhost",
+  "paths":{
+  "public_dir":"viewer",
+  "uploads_dir":"uploads",
+  "output_dir":"output",
+  "data_dir":"data"
+  }
+}
