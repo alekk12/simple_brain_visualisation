@@ -45,6 +45,9 @@ The `helper\experiments` folder contains Jupyter notebooks with experiments and 
 * `brain_text_detection.ipynb`: the simplest approach
 * `ner_tutorial.ipynb` based on medical NER tutorial
 * `finetune.ipynb` finetuning
+
+# Models
+Normally the embeddings and safetensors would not be uploaded, and ignored, but they were uploaded using LFS for convenience.
    
 # Results
 The simple version of biobert, with embeddings based on AAL3v1 regions of the brain but with no extra pre-training works well only when the text is closely related to the name of the region. The probability of each region is listed in the brackets. 
