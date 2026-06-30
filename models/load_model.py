@@ -78,9 +78,16 @@ def compute_label_embeddings_optimized(labels, atl_dict, tokenizer, model, devic
         
     return torch.cat(label_embeddings, dim=0)
 
+def normalize_query(text):
+    """Normalize selected text"""
+    #TO DO - model dependednt, some have full names, others do not
+    text = re.sub(r'[.,\-;]', ' ', text)
+    text = re.sub(r'\s+', ' ', text).strip()
+    return text.lower()
+
 def find_top_n_regions(query, tokenizer, model, label_embs, atlas_labels, n=3, device="cuda"):
     """Return top `n` brain regions"""
-    query_emb = get_bert_embedding(query, tokenizer, model, device)
+    query_emb = get_bert_embedding(normalize_query(query), tokenizer, model, device)
     sims = F.cosine_similarity(query_emb, label_embs)
     top_vals, top_indices = torch.topk(sims, n)
     return [(atlas_labels[i], top_vals[j].item(), i) for j, i in enumerate(top_indices)]

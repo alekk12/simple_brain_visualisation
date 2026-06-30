@@ -10,12 +10,13 @@ Setup to run the full visualisation (Node.js, conda/mamba required, cuda for fas
    npm install
    ```
    This will install the necessary libraries, depending on the existing version of node installed some errors need to be resoled.
-3. Create `local.config.json` based on `template_local.config.json`. This defines which model will be used to predict the brain regions. Update `config.json` if the typically used `localhost:3000` is not available.
+3. Create a file `local.config.json` based on `template_local.config.json`. This defines which model will be used to predict the brain regions. Update `config.json` if the typically used `localhost:3000` is not available.
 4. Create conda env for running the model. 
    ```python
    conda env create -f environment.yml
    ```
-5. Start the server with visualisations.
+5. Update `local.config.json` with the exact `conda_model` and `bert_model` paths.
+6. Start the server with visualisations.
    ```python
    npm start
    ```
@@ -113,7 +114,7 @@ Normally the embeddings and safetensors would not be uploaded, and ignored, but 
 # Results
 The simple version of biobert, with embeddings based on AAL3v1 regions of the brain but with no extra pre-training works well only when the text is closely related to the name of the region. The probability of each region is listed in the brackets. 
 ![alt text](image.png)
-
+![alt text](image-1.png)
 The more complex version of biobert, trained on annotated PubMed abstracts. The dictionary comes from the AAL3v1 atlas with 170 unique brain regions.
 
 The most complex model was trained on hierarchical embeddings. AAL atlas has brain regions that are extremely common (hippocampus) and others that are quite rare. The goal is to highlight the most relevant regions.
