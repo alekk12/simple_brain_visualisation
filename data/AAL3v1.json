@@ -1,0 +1,1682 @@
+{
+    "1": {
+        "aal_name": "Precentral_L",
+        "full_name": "left precentral gyrus",
+        "synonyms": [
+            "L-PreCG",
+            "LPreCG",
+            "PreCG_L"
+        ],
+        "definition": ""
+    },
+    "2": {
+        "aal_name": "Precentral_R",
+        "full_name": "right precentral gyrus",
+        "synonyms": [
+            "RPreCG",
+            "R-PreCG",
+            "PreCG_R"
+        ],
+        "definition": ""
+    },
+    "3": {
+        "aal_name": "Frontal_Sup_2_L",
+        "full_name": "left superior frontal gyrus, dorsolateral",
+        "synonyms": [
+            "SFG_L",
+            "LSFG",
+            "L-SFG"
+        ],
+        "definition": ""
+    },
+    "4": {
+        "aal_name": "Frontal_Sup_2_R",
+        "full_name": "right superior frontal gyrus, dorsolateral",
+        "synonyms": [
+            "SFG_R",
+            "R-SFG",
+            "RSFG"
+        ],
+        "definition": ""
+    },
+    "5": {
+        "aal_name": "Frontal_Mid_2_L",
+        "full_name": "left middle frontal gyrus",
+        "synonyms": [
+            "L-MFG",
+            "LMFG",
+            "MFG_L"
+        ],
+        "definition": ""
+    },
+    "6": {
+        "aal_name": "Frontal_Mid_2_R",
+        "full_name": "right middle frontal gyrus",
+        "synonyms": [
+            "R-MFG",
+            "MFG_R",
+            "RMFG"
+        ],
+        "definition": ""
+    },
+    "7": {
+        "aal_name": "Frontal_Inf_Oper_L",
+        "full_name": "left inferior frontal gyrus, opercular part",
+        "synonyms": [
+            "L-IFGoperc",
+            "IFGoperc_L",
+            "LIFGoperc"
+        ],
+        "definition": ""
+    },
+    "8": {
+        "aal_name": "Frontal_Inf_Oper_R",
+        "full_name": "right inferior frontal gyrus, opercular part",
+        "synonyms": [
+            "RIFGoperc",
+            "IFGoperc_R",
+            "R-IFGoperc"
+        ],
+        "definition": ""
+    },
+    "9": {
+        "aal_name": "Frontal_Inf_Tri_L",
+        "full_name": "left inferior frontal gyrus, triangular part",
+        "synonyms": [
+            "LIFGtriang",
+            "IFGtriang_L",
+            "L-IFGtriang"
+        ],
+        "definition": ""
+    },
+    "10": {
+        "aal_name": "Frontal_Inf_Tri_R",
+        "full_name": "right inferior frontal gyrus, triangular part",
+        "synonyms": [
+            "RIFGtriang",
+            "IFGtriang_R",
+            "R-IFGtriang"
+        ],
+        "definition": ""
+    },
+    "11": {
+        "aal_name": "Frontal_Inf_Orb_2_L",
+        "full_name": "left ifg pars orbitalis",
+        "synonyms": [
+            "L-IFGorb",
+            "IFGorb_L",
+            "LIFGorb"
+        ],
+        "definition": ""
+    },
+    "12": {
+        "aal_name": "Frontal_Inf_Orb_2_R",
+        "full_name": "right ifg pars orbitalis",
+        "synonyms": [
+            "IFGorb_R",
+            "R-IFGorb",
+            "RIFGorb"
+        ],
+        "definition": ""
+    },
+    "13": {
+        "aal_name": "Rolandic_Oper_L",
+        "full_name": "left rolandic operculum",
+        "synonyms": [
+            "L-ROL",
+            "LROL",
+            "ROL_L"
+        ],
+        "definition": ""
+    },
+    "14": {
+        "aal_name": "Rolandic_Oper_R",
+        "full_name": "right rolandic operculum",
+        "synonyms": [
+            "RROL",
+            "R-ROL",
+            "ROL_R"
+        ],
+        "definition": ""
+    },
+    "15": {
+        "aal_name": "Supp_Motor_Area_L",
+        "full_name": "left supplementary motor area",
+        "synonyms": [
+            "L-SMA",
+            "LSMA",
+            "SMA_L"
+        ],
+        "definition": ""
+    },
+    "16": {
+        "aal_name": "Supp_Motor_Area_R",
+        "full_name": "right supplementary motor area",
+        "synonyms": [
+            "SMA_R",
+            "RSMA",
+            "R-SMA"
+        ],
+        "definition": ""
+    },
+    "17": {
+        "aal_name": "Olfactory_L",
+        "full_name": "left olfactory cortex",
+        "synonyms": [
+            "OLF_L",
+            "L-OLF",
+            "LOLF"
+        ],
+        "definition": ""
+    },
+    "18": {
+        "aal_name": "Olfactory_R",
+        "full_name": "right olfactory cortex",
+        "synonyms": [
+            "ROLF",
+            "OLF_R",
+            "R-OLF"
+        ],
+        "definition": ""
+    },
+    "19": {
+        "aal_name": "Frontal_Sup_Medial_L",
+        "full_name": "left superior frontal gyrus, medial",
+        "synonyms": [
+            "L-SFGmedial",
+            "SFGmedial_L",
+            "LSFGmedial"
+        ],
+        "definition": ""
+    },
+    "20": {
+        "aal_name": "Frontal_Sup_Medial_R",
+        "full_name": "right superior frontal gyrus, medial",
+        "synonyms": [
+            "R-SFGmedial",
+            "SFGmedial_R",
+            "RSFGmedial"
+        ],
+        "definition": ""
+    },
+    "21": {
+        "aal_name": "Frontal_Med_Orb_L",
+        "full_name": "left superior frontal gyrus, medial orbital",
+        "synonyms": [
+            "L-PFCventmed",
+            "LPFCventmed",
+            "PFCventmed_L"
+        ],
+        "definition": ""
+    },
+    "22": {
+        "aal_name": "Frontal_Med_Orb_R",
+        "full_name": "right superior frontal gyrus, medial orbital",
+        "synonyms": [
+            "R-PFCventmed",
+            "RPFCventmed",
+            "PFCventmed_R"
+        ],
+        "definition": ""
+    },
+    "23": {
+        "aal_name": "Rectus_L",
+        "full_name": "left gyrus rectus",
+        "synonyms": [
+            "REC_L",
+            "L-REC",
+            "LREC"
+        ],
+        "definition": ""
+    },
+    "24": {
+        "aal_name": "Rectus_R",
+        "full_name": "right gyrus rectus",
+        "synonyms": [
+            "RREC",
+            "REC_R",
+            "R-REC"
+        ],
+        "definition": ""
+    },
+    "25": {
+        "aal_name": "OFCmed_L",
+        "full_name": "left medial orbital gyrus",
+        "synonyms": [
+            "OFCmed_L",
+            "LOFCmed",
+            "L-OFCmed"
+        ],
+        "definition": ""
+    },
+    "26": {
+        "aal_name": "OFCmed_R",
+        "full_name": "right medial orbital gyrus",
+        "synonyms": [
+            "ROFCmed",
+            "R-OFCmed",
+            "OFCmed_R"
+        ],
+        "definition": ""
+    },
+    "27": {
+        "aal_name": "OFCant_L",
+        "full_name": "left anterior orbital gyrus",
+        "synonyms": [
+            "LOFCant",
+            "OFCant_L",
+            "L-OFCant"
+        ],
+        "definition": ""
+    },
+    "28": {
+        "aal_name": "OFCant_R",
+        "full_name": "right anterior orbital gyrus",
+        "synonyms": [
+            "ROFCant",
+            "OFCant_R",
+            "R-OFCant"
+        ],
+        "definition": ""
+    },
+    "29": {
+        "aal_name": "OFCpost_L",
+        "full_name": "left posterior orbital gyrus",
+        "synonyms": [
+            "L-OFCpost",
+            "OFCpost_L",
+            "LOFCpost"
+        ],
+        "definition": ""
+    },
+    "30": {
+        "aal_name": "OFCpost_R",
+        "full_name": "right posterior orbital gyrus",
+        "synonyms": [
+            "ROFCpost",
+            "R-OFCpost",
+            "OFCpost_R"
+        ],
+        "definition": ""
+    },
+    "31": {
+        "aal_name": "OFClat_L",
+        "full_name": "left lateral orbital gyrus",
+        "synonyms": [
+            "L-OFClat",
+            "LOFClat",
+            "OFClat_L"
+        ],
+        "definition": ""
+    },
+    "32": {
+        "aal_name": "OFClat_R",
+        "full_name": "right lateral orbital gyrus",
+        "synonyms": [
+            "ROFClat",
+            "OFClat_R",
+            "R-OFClat"
+        ],
+        "definition": ""
+    },
+    "33": {
+        "aal_name": "Insula_L",
+        "full_name": "left insula",
+        "synonyms": [
+            "LINS",
+            "INS_L",
+            "L-INS"
+        ],
+        "definition": ""
+    },
+    "34": {
+        "aal_name": "Insula_R",
+        "full_name": "right insula",
+        "synonyms": [
+            "INS_R",
+            "RINS",
+            "R-INS"
+        ],
+        "definition": ""
+    },
+    "35": {
+        "aal_name": "Cingulate_Ant_L",
+        "full_name": "left anterior cingulate & paracingulate gyri",
+        "synonyms": [
+            "L-ACC",
+            "LACC",
+            "ACC_L"
+        ],
+        "definition": ""
+    },
+    "36": {
+        "aal_name": "Cingulate_Ant_R",
+        "full_name": "right anterior cingulate & paracingulate gyri",
+        "synonyms": [
+            "ACC_R",
+            "RACC",
+            "R-ACC"
+        ],
+        "definition": ""
+    },
+    "37": {
+        "aal_name": "Cingulate_Mid_L",
+        "full_name": "left middle cingulate & paracingulate gyri",
+        "synonyms": [
+            "L-MCC",
+            "MCC_L",
+            "LMCC"
+        ],
+        "definition": ""
+    },
+    "38": {
+        "aal_name": "Cingulate_Mid_R",
+        "full_name": "right middle cingulate & paracingulate gyri",
+        "synonyms": [
+            "RMCC",
+            "R-MCC",
+            "MCC_R"
+        ],
+        "definition": ""
+    },
+    "39": {
+        "aal_name": "Cingulate_Post_L",
+        "full_name": "left posterior cingulate gyrus",
+        "synonyms": [
+            "LPCC",
+            "PCC_L",
+            "L-PCC"
+        ],
+        "definition": ""
+    },
+    "40": {
+        "aal_name": "Cingulate_Post_R",
+        "full_name": "right posterior cingulate gyrus",
+        "synonyms": [
+            "PCC_R",
+            "RPCC",
+            "R-PCC"
+        ],
+        "definition": ""
+    },
+    "41": {
+        "aal_name": "Hippocampus_L",
+        "full_name": "left hippocampus",
+        "synonyms": [
+            "LHIP",
+            "L-HIP",
+            "HIP_L"
+        ],
+        "definition": ""
+    },
+    "42": {
+        "aal_name": "Hippocampus_R",
+        "full_name": "right hippocampus",
+        "synonyms": [
+            "RHIP",
+            "HIP_R",
+            "R-HIP"
+        ],
+        "definition": ""
+    },
+    "43": {
+        "aal_name": "ParaHippocampal_L",
+        "full_name": "left parahippocampal gyrus",
+        "synonyms": [
+            "L-PHG",
+            "PHG_L",
+            "LPHG"
+        ],
+        "definition": ""
+    },
+    "44": {
+        "aal_name": "ParaHippocampal_R",
+        "full_name": "right parahippocampal gyrus",
+        "synonyms": [
+            "R-PHG",
+            "RPHG",
+            "PHG_R"
+        ],
+        "definition": ""
+    },
+    "45": {
+        "aal_name": "Amygdala_L",
+        "full_name": "left amygdala",
+        "synonyms": [
+            "LAMYG",
+            "AMYG_L",
+            "L-AMYG"
+        ],
+        "definition": ""
+    },
+    "46": {
+        "aal_name": "Amygdala_R",
+        "full_name": "right amygdala",
+        "synonyms": [
+            "R-AMYG",
+            "RAMYG",
+            "AMYG_R"
+        ],
+        "definition": ""
+    },
+    "47": {
+        "aal_name": "Calcarine_L",
+        "full_name": "left calcarine fissure and surrounding cortex",
+        "synonyms": [
+            "CAL_L",
+            "L-CAL",
+            "LCAL"
+        ],
+        "definition": ""
+    },
+    "48": {
+        "aal_name": "Calcarine_R",
+        "full_name": "right calcarine fissure and surrounding cortex",
+        "synonyms": [
+            "RCAL",
+            "CAL_R",
+            "R-CAL"
+        ],
+        "definition": ""
+    },
+    "49": {
+        "aal_name": "Cuneus_L",
+        "full_name": "left cuneus",
+        "synonyms": [
+            "CUN_L",
+            "LCUN",
+            "L-CUN"
+        ],
+        "definition": ""
+    },
+    "50": {
+        "aal_name": "Cuneus_R",
+        "full_name": "right cuneus",
+        "synonyms": [
+            "R-CUN",
+            "CUN_R",
+            "RCUN"
+        ],
+        "definition": ""
+    },
+    "51": {
+        "aal_name": "Lingual_L",
+        "full_name": "left lingual gyrus",
+        "synonyms": [
+            "L-LING",
+            "LLING",
+            "LING_L"
+        ],
+        "definition": ""
+    },
+    "52": {
+        "aal_name": "Lingual_R",
+        "full_name": "right lingual gyrus",
+        "synonyms": [
+            "LING_R",
+            "RLING",
+            "R-LING"
+        ],
+        "definition": ""
+    },
+    "53": {
+        "aal_name": "Occipital_Sup_L",
+        "full_name": "left superior occipital gyrus",
+        "synonyms": [
+            "L-SOG",
+            "SOG_L",
+            "LSOG"
+        ],
+        "definition": ""
+    },
+    "54": {
+        "aal_name": "Occipital_Sup_R",
+        "full_name": "right superior occipital gyrus",
+        "synonyms": [
+            "SOG_R",
+            "R-SOG",
+            "RSOG"
+        ],
+        "definition": ""
+    },
+    "55": {
+        "aal_name": "Occipital_Mid_L",
+        "full_name": "left middle occipital gyrus",
+        "synonyms": [
+            "L-MOG",
+            "LMOG",
+            "MOG_L"
+        ],
+        "definition": ""
+    },
+    "56": {
+        "aal_name": "Occipital_Mid_R",
+        "full_name": "right middle occipital gyrus",
+        "synonyms": [
+            "R-MOG",
+            "MOG_R",
+            "RMOG"
+        ],
+        "definition": ""
+    },
+    "57": {
+        "aal_name": "Occipital_Inf_L",
+        "full_name": "left inferior occipital gyrus",
+        "synonyms": [
+            "LIOG",
+            "IOG_L",
+            "L-IOG"
+        ],
+        "definition": ""
+    },
+    "58": {
+        "aal_name": "Occipital_Inf_R",
+        "full_name": "right inferior occipital gyrus",
+        "synonyms": [
+            "R-IOG",
+            "RIOG",
+            "IOG_R"
+        ],
+        "definition": ""
+    },
+    "59": {
+        "aal_name": "Fusiform_L",
+        "full_name": "left fusiform gyrus",
+        "synonyms": [
+            "FFG_L",
+            "LFFG",
+            "L-FFG"
+        ],
+        "definition": ""
+    },
+    "60": {
+        "aal_name": "Fusiform_R",
+        "full_name": "right fusiform gyrus",
+        "synonyms": [
+            "FFG_R",
+            "RFFG",
+            "R-FFG"
+        ],
+        "definition": ""
+    },
+    "61": {
+        "aal_name": "Postcentral_L",
+        "full_name": "left postcentral gyrus",
+        "synonyms": [
+            "PoCG_L",
+            "L-PoCG",
+            "LPoCG"
+        ],
+        "definition": ""
+    },
+    "62": {
+        "aal_name": "Postcentral_R",
+        "full_name": "right postcentral gyrus",
+        "synonyms": [
+            "PoCG_R",
+            "R-PoCG",
+            "RPoCG"
+        ],
+        "definition": ""
+    },
+    "63": {
+        "aal_name": "Parietal_Sup_L",
+        "full_name": "left superior parietal gyrus",
+        "synonyms": [
+            "SPG_L",
+            "L-SPG",
+            "LSPG"
+        ],
+        "definition": ""
+    },
+    "64": {
+        "aal_name": "Parietal_Sup_R",
+        "full_name": "right superior parietal gyrus",
+        "synonyms": [
+            "RSPG",
+            "R-SPG",
+            "SPG_R"
+        ],
+        "definition": ""
+    },
+    "65": {
+        "aal_name": "Parietal_Inf_L",
+        "full_name": "left inferior parietal gyrus",
+        "synonyms": [
+            "LIPG",
+            "L-IPG",
+            "IPG_L"
+        ],
+        "definition": ""
+    },
+    "66": {
+        "aal_name": "Parietal_Inf_R",
+        "full_name": "right inferior parietal gyrus",
+        "synonyms": [
+            "RIPG",
+            "IPG_R",
+            "R-IPG"
+        ],
+        "definition": ""
+    },
+    "67": {
+        "aal_name": "SupraMarginal_L",
+        "full_name": "left supramarginal gyrus",
+        "synonyms": [
+            "LSMG",
+            "SMG_L",
+            "L-SMG"
+        ],
+        "definition": ""
+    },
+    "68": {
+        "aal_name": "SupraMarginal_R",
+        "full_name": "right supramarginal gyrus",
+        "synonyms": [
+            "SMG_R",
+            "RSMG",
+            "R-SMG"
+        ],
+        "definition": ""
+    },
+    "69": {
+        "aal_name": "Angular_L",
+        "full_name": "left angular gyrus",
+        "synonyms": [
+            "L-ANG",
+            "ANG_L",
+            "LANG"
+        ],
+        "definition": ""
+    },
+    "70": {
+        "aal_name": "Angular_R",
+        "full_name": "right angular gyrus",
+        "synonyms": [
+            "RANG",
+            "ANG_R",
+            "R-ANG"
+        ],
+        "definition": ""
+    },
+    "71": {
+        "aal_name": "Precuneus_L",
+        "full_name": "left precuneus",
+        "synonyms": [
+            "PCUN_L",
+            "LPCUN",
+            "L-PCUN"
+        ],
+        "definition": ""
+    },
+    "72": {
+        "aal_name": "Precuneus_R",
+        "full_name": "right precuneus",
+        "synonyms": [
+            "RPCUN",
+            "PCUN_R",
+            "R-PCUN"
+        ],
+        "definition": ""
+    },
+    "73": {
+        "aal_name": "Paracentral_Lobule_L",
+        "full_name": "left paracentral lobule",
+        "synonyms": [
+            "PCL_L",
+            "L-PCL",
+            "LPCL"
+        ],
+        "definition": ""
+    },
+    "74": {
+        "aal_name": "Paracentral_Lobule_R",
+        "full_name": "right paracentral lobule",
+        "synonyms": [
+            "PCL_R",
+            "R-PCL",
+            "RPCL"
+        ],
+        "definition": ""
+    },
+    "75": {
+        "aal_name": "Caudate_L",
+        "full_name": "left caudate nucleus",
+        "synonyms": [
+            "L-CAU",
+            "CAU_L",
+            "LCAU"
+        ],
+        "definition": ""
+    },
+    "76": {
+        "aal_name": "Caudate_R",
+        "full_name": "right caudate nucleus",
+        "synonyms": [
+            "CAU_R",
+            "RCAU",
+            "R-CAU"
+        ],
+        "definition": ""
+    },
+    "77": {
+        "aal_name": "Putamen_L",
+        "full_name": "left lenticular nucleus, putamen",
+        "synonyms": [
+            "LPUT",
+            "L-PUT",
+            "PUT_L"
+        ],
+        "definition": ""
+    },
+    "78": {
+        "aal_name": "Putamen_R",
+        "full_name": "right lenticular nucleus, putamen",
+        "synonyms": [
+            "PUT_R",
+            "R-PUT",
+            "RPUT"
+        ],
+        "definition": ""
+    },
+    "79": {
+        "aal_name": "Pallidum_L",
+        "full_name": "left lenticular nucleus, pallidum",
+        "synonyms": [
+            "LPAL",
+            "PAL_L",
+            "L-PAL"
+        ],
+        "definition": ""
+    },
+    "80": {
+        "aal_name": "Pallidum_R",
+        "full_name": "right lenticular nucleus, pallidum",
+        "synonyms": [
+            "R-PAL",
+            "RPAL",
+            "PAL_R"
+        ],
+        "definition": ""
+    },
+    "81": {
+        "aal_name": "Thalamus_L",
+        "full_name": "left thalamus",
+        "synonyms": [
+            "LTHA",
+            "L-THA",
+            "THA_L"
+        ],
+        "definition": ""
+    },
+    "82": {
+        "aal_name": "Thalamus_R",
+        "full_name": "right thalamus",
+        "synonyms": [
+            "R-THA",
+            "RTHA",
+            "THA_R"
+        ],
+        "definition": ""
+    },
+    "83": {
+        "aal_name": "Heschl_L",
+        "full_name": "left heschl\u00e2\u20ac\u2122s gyrus",
+        "synonyms": [
+            "L-HES",
+            "LHES",
+            "HES_L"
+        ],
+        "definition": ""
+    },
+    "84": {
+        "aal_name": "Heschl_R",
+        "full_name": "right heschl\u00e2\u20ac\u2122s gyrus",
+        "synonyms": [
+            "HES_R",
+            "R-HES",
+            "RHES"
+        ],
+        "definition": ""
+    },
+    "85": {
+        "aal_name": "Temporal_Sup_L",
+        "full_name": "left superior temporal gyrus",
+        "synonyms": [
+            "LSTG",
+            "L-STG",
+            "STG_L"
+        ],
+        "definition": ""
+    },
+    "86": {
+        "aal_name": "Temporal_Sup_R",
+        "full_name": "right superior temporal gyrus",
+        "synonyms": [
+            "STG_R",
+            "RSTG",
+            "R-STG"
+        ],
+        "definition": ""
+    },
+    "87": {
+        "aal_name": "Temporal_Pole_Sup_L",
+        "full_name": "left temporal pole: superior temporal gyrus",
+        "synonyms": [
+            "LTPOsup",
+            "L-TPOsup",
+            "TPOsup_L"
+        ],
+        "definition": ""
+    },
+    "88": {
+        "aal_name": "Temporal_Pole_Sup_R",
+        "full_name": "right temporal pole: superior temporal gyrus",
+        "synonyms": [
+            "TPOsup_R",
+            "R-TPOsup",
+            "RTPOsup"
+        ],
+        "definition": ""
+    },
+    "89": {
+        "aal_name": "Temporal_Mid_L",
+        "full_name": "left middle temporal gyrus",
+        "synonyms": [
+            "MTG_L",
+            "L-MTG",
+            "LMTG"
+        ],
+        "definition": ""
+    },
+    "90": {
+        "aal_name": "Temporal_Mid_R",
+        "full_name": "right middle temporal gyrus",
+        "synonyms": [
+            "RMTG",
+            "MTG_R",
+            "R-MTG"
+        ],
+        "definition": ""
+    },
+    "91": {
+        "aal_name": "Temporal_Pole_Mid_L",
+        "full_name": "left temporal pole: middle temporal gyrus",
+        "synonyms": [
+            "L-TPOmid",
+            "TPOmid_L",
+            "LTPOmid"
+        ],
+        "definition": ""
+    },
+    "92": {
+        "aal_name": "Temporal_Pole_Mid_R",
+        "full_name": "right temporal pole: middle temporal gyrus",
+        "synonyms": [
+            "R-TPOmid",
+            "TPOmid_R",
+            "RTPOmid"
+        ],
+        "definition": ""
+    },
+    "93": {
+        "aal_name": "Temporal_Inf_L",
+        "full_name": "left inferior temporal gyrus",
+        "synonyms": [
+            "ITG_L",
+            "L-ITG",
+            "LITG"
+        ],
+        "definition": ""
+    },
+    "94": {
+        "aal_name": "Temporal_Inf_R",
+        "full_name": "right inferior temporal gyrus",
+        "synonyms": [
+            "RITG",
+            "R-ITG",
+            "ITG_R"
+        ],
+        "definition": ""
+    },
+    "95": {
+        "aal_name": "Cerebellum_Crus1_L",
+        "full_name": "left crus i of cerebellar hemisphere",
+        "synonyms": [
+            "LCERCRU1",
+            "CERCRU1_L",
+            "L-CERCRU1"
+        ],
+        "definition": ""
+    },
+    "96": {
+        "aal_name": "Cerebellum_Crus1_R",
+        "full_name": "right crus i of cerebellar hemisphere",
+        "synonyms": [
+            "CERCRU1_R",
+            "R-CERCRU1",
+            "RCERCRU1"
+        ],
+        "definition": ""
+    },
+    "97": {
+        "aal_name": "Cerebellum_Crus2_L",
+        "full_name": "left crus ii of cerebellar hemisphere",
+        "synonyms": [
+            "L-CERCRU2",
+            "LCERCRU2",
+            "CERCRU2_L"
+        ],
+        "definition": ""
+    },
+    "98": {
+        "aal_name": "Cerebellum_Crus2_R",
+        "full_name": "right crus ii of cerebellar hemisphere",
+        "synonyms": [
+            "RCERCRU2",
+            "R-CERCRU2",
+            "CERCRU2_R"
+        ],
+        "definition": ""
+    },
+    "99": {
+        "aal_name": "Cerebellum_3_L",
+        "full_name": "left lobule iii of cerebellar hemisphere",
+        "synonyms": [
+            "LCER3",
+            "CER3_L",
+            "L-CER3"
+        ],
+        "definition": ""
+    },
+    "100": {
+        "aal_name": "Cerebellum_3_R",
+        "full_name": "right lobule iii of cerebellar hemisphere",
+        "synonyms": [
+            "R-CER3",
+            "CER3_R",
+            "RCER3"
+        ],
+        "definition": ""
+    },
+    "101": {
+        "aal_name": "Cerebellum_4_5_L",
+        "full_name": "left lobule iv, v of cerebellar hemisphere",
+        "synonyms": [
+            "L-CER4_5",
+            "LCER4_5",
+            "CER4_5_L"
+        ],
+        "definition": ""
+    },
+    "102": {
+        "aal_name": "Cerebellum_4_5_R",
+        "full_name": "right lobule iv, v of cerebellar hemisphere",
+        "synonyms": [
+            "RCER4_5",
+            "CER4_5_R",
+            "R-CER4_5"
+        ],
+        "definition": ""
+    },
+    "103": {
+        "aal_name": "Cerebellum_6_L",
+        "full_name": "left lobule vi of cerebellar hemisphere",
+        "synonyms": [
+            "LCER",
+            "CER_L",
+            "L-CER"
+        ],
+        "definition": ""
+    },
+    "104": {
+        "aal_name": "Cerebellum_6_R",
+        "full_name": "right lobule vi of cerebellar hemisphere",
+        "synonyms": [
+            "R-CER",
+            "RCER",
+            "CER_R"
+        ],
+        "definition": ""
+    },
+    "105": {
+        "aal_name": "Cerebellum_7b_L",
+        "full_name": "left lobule viib of cerebellar hemisphere",
+        "synonyms": [
+            "CER7b_L",
+            "L-CER7b",
+            "LCER7b"
+        ],
+        "definition": ""
+    },
+    "106": {
+        "aal_name": "Cerebellum_7b_R",
+        "full_name": "right lobule viib of cerebellar hemisphere",
+        "synonyms": [
+            "CER7b_R",
+            "RCER7b",
+            "R-CER7b"
+        ],
+        "definition": ""
+    },
+    "107": {
+        "aal_name": "Cerebellum_8_L",
+        "full_name": "left lobule viii of cerebellar hemisphere",
+        "synonyms": [
+            "L-CER8",
+            "LCER8",
+            "CER8_L"
+        ],
+        "definition": ""
+    },
+    "108": {
+        "aal_name": "Cerebellum_8_R",
+        "full_name": "right lobule viii of cerebellar hemisphere",
+        "synonyms": [
+            "RCER8",
+            "R-CER8",
+            "CER8_R"
+        ],
+        "definition": ""
+    },
+    "109": {
+        "aal_name": "Cerebellum_9_L",
+        "full_name": "left lobule ix of cerebellar hemisphere",
+        "synonyms": [
+            "L-CER9",
+            "CER9_L",
+            "LCER9"
+        ],
+        "definition": ""
+    },
+    "110": {
+        "aal_name": "Cerebellum_9_R",
+        "full_name": "right lobule ix of cerebellar hemisphere",
+        "synonyms": [
+            "R-CER9",
+            "RCER9",
+            "CER9_R"
+        ],
+        "definition": ""
+    },
+    "111": {
+        "aal_name": "Cerebellum_10_L",
+        "full_name": "left lobule x of cerebellar hemisphere",
+        "synonyms": [
+            "L-CER10",
+            "LCER10",
+            "CER10_L"
+        ],
+        "definition": ""
+    },
+    "112": {
+        "aal_name": "Cerebellum_10_R",
+        "full_name": "right lobule x of cerebellar hemisphere",
+        "synonyms": [
+            "RCER10",
+            "R-CER10",
+            "CER10_R"
+        ],
+        "definition": ""
+    },
+    "113": {
+        "aal_name": "Vermis_1_2",
+        "full_name": "midline lobule i, ii of vermis",
+        "synonyms": [
+            "VER1_2"
+        ],
+        "definition": ""
+    },
+    "114": {
+        "aal_name": "Vermis_3",
+        "full_name": "midline lobule iii of vermis",
+        "synonyms": [
+            "VER3"
+        ],
+        "definition": ""
+    },
+    "115": {
+        "aal_name": "Vermis_4_5",
+        "full_name": "midline lobule iv, v of vermis",
+        "synonyms": [
+            "VER4_5"
+        ],
+        "definition": ""
+    },
+    "116": {
+        "aal_name": "Vermis_6",
+        "full_name": "midline lobule vi of vermis",
+        "synonyms": [
+            "VER6"
+        ],
+        "definition": ""
+    },
+    "117": {
+        "aal_name": "Vermis_7",
+        "full_name": "midline lobule vii of vermis",
+        "synonyms": [
+            "VER7"
+        ],
+        "definition": ""
+    },
+    "118": {
+        "aal_name": "Vermis_8",
+        "full_name": "midline lobule viii of vermis",
+        "synonyms": [
+            "VER8"
+        ],
+        "definition": ""
+    },
+    "119": {
+        "aal_name": "Vermis_9",
+        "full_name": "midline lobule ix of vermis",
+        "synonyms": [
+            "VER9"
+        ],
+        "definition": ""
+    },
+    "120": {
+        "aal_name": "Vermis_10",
+        "full_name": "midline lobule x of vermis",
+        "synonyms": [
+            "VER10"
+        ],
+        "definition": ""
+    },
+    "121": {
+        "aal_name": "Thal_AV_L",
+        "full_name": "left thalamus, anteroventral nucleus",
+        "synonyms": [
+            "LtAV",
+            "tAV_L",
+            "L-tAV"
+        ],
+        "definition": ""
+    },
+    "122": {
+        "aal_name": "Thal_AV_R",
+        "full_name": "right thalamus, anteroventral nucleus",
+        "synonyms": [
+            "RtAV",
+            "tAV_R",
+            "R-tAV"
+        ],
+        "definition": ""
+    },
+    "123": {
+        "aal_name": "Thal_LP_L",
+        "full_name": "left lateral posterior",
+        "synonyms": [
+            "LtLP",
+            "tLP_L",
+            "L-tLP"
+        ],
+        "definition": ""
+    },
+    "124": {
+        "aal_name": "Thal_LP_R",
+        "full_name": "right lateral posterior",
+        "synonyms": [
+            "R-tLP",
+            "tLP_R",
+            "RtLP"
+        ],
+        "definition": ""
+    },
+    "125": {
+        "aal_name": "Thal_VA_L",
+        "full_name": "left ventral anterior",
+        "synonyms": [
+            "tVA_L",
+            "L-tVA",
+            "LtVA"
+        ],
+        "definition": ""
+    },
+    "126": {
+        "aal_name": "Thal_VA_R",
+        "full_name": "right ventral anterior",
+        "synonyms": [
+            "tVA_R",
+            "R-tVA",
+            "RtVA"
+        ],
+        "definition": ""
+    },
+    "127": {
+        "aal_name": "Thal_VL_L",
+        "full_name": "left ventral lateral",
+        "synonyms": [
+            "tVL_L",
+            "LtVL",
+            "L-tVL"
+        ],
+        "definition": ""
+    },
+    "128": {
+        "aal_name": "Thal_VL_R",
+        "full_name": "right ventral lateral",
+        "synonyms": [
+            "RtVL",
+            "tVL_R",
+            "R-tVL"
+        ],
+        "definition": ""
+    },
+    "129": {
+        "aal_name": "Thal_VPL_L",
+        "full_name": "left ventral posterolateral",
+        "synonyms": [
+            "L-tVPL",
+            "LtVPL",
+            "tVPL_L"
+        ],
+        "definition": ""
+    },
+    "130": {
+        "aal_name": "Thal_VPL_R",
+        "full_name": "right ventral posterolateral",
+        "synonyms": [
+            "tVPL_R",
+            "R-tVPL",
+            "RtVPL"
+        ],
+        "definition": ""
+    },
+    "131": {
+        "aal_name": "Thal_IL_L",
+        "full_name": "left intralaminar",
+        "synonyms": [
+            "LtIL",
+            "tIL_L",
+            "L-tIL"
+        ],
+        "definition": ""
+    },
+    "132": {
+        "aal_name": "Thal_IL_R",
+        "full_name": "right intralaminar",
+        "synonyms": [
+            "RtIL",
+            "tIL_R",
+            "R-tIL"
+        ],
+        "definition": ""
+    },
+    "133": {
+        "aal_name": "Thal_Re_L",
+        "full_name": "left reuniens",
+        "synonyms": [
+            "tRe_L",
+            "LtRe",
+            "L-tRe"
+        ],
+        "definition": ""
+    },
+    "134": {
+        "aal_name": "Thal_Re_R",
+        "full_name": "right reuniens",
+        "synonyms": [
+            "RtRe",
+            "R-tRe",
+            "tRe_R"
+        ],
+        "definition": ""
+    },
+    "135": {
+        "aal_name": "Thal_MDm_L",
+        "full_name": "left mediodorsal medial magnocellular",
+        "synonyms": [
+            "L-tMDm",
+            "LtMDm",
+            "tMDm_L"
+        ],
+        "definition": ""
+    },
+    "136": {
+        "aal_name": "Thal_MDm_R",
+        "full_name": "right mediodorsal medial magnocellular",
+        "synonyms": [
+            "RtMDm",
+            "R-tMDm",
+            "tMDm_R"
+        ],
+        "definition": ""
+    },
+    "137": {
+        "aal_name": "Thal_MDl_L",
+        "full_name": "left mediodorsal lateral parvocellular",
+        "synonyms": [
+            "LtMDl",
+            "tMDl_L",
+            "L-tMDl"
+        ],
+        "definition": ""
+    },
+    "138": {
+        "aal_name": "Thal_MDl_R",
+        "full_name": "right mediodorsal lateral parvocellular",
+        "synonyms": [
+            "RtMDl",
+            "tMDl_R",
+            "R-tMDl"
+        ],
+        "definition": ""
+    },
+    "139": {
+        "aal_name": "Thal_LGN_L",
+        "full_name": "left lateral geniculate",
+        "synonyms": [
+            "LtLGN",
+            "tLGN_L",
+            "L-tLGN"
+        ],
+        "definition": ""
+    },
+    "140": {
+        "aal_name": "Thal_LGN_R",
+        "full_name": "right lateral geniculate",
+        "synonyms": [
+            "RtLGN",
+            "tLGN_R",
+            "R-tLGN"
+        ],
+        "definition": ""
+    },
+    "141": {
+        "aal_name": "Thal_MGN_L",
+        "full_name": "left medial geniculate",
+        "synonyms": [
+            "tMGN_L",
+            "L-tMGN",
+            "LtMGN"
+        ],
+        "definition": ""
+    },
+    "142": {
+        "aal_name": "Thal_MGN_R",
+        "full_name": "right medial geniculate",
+        "synonyms": [
+            "tMGN_R",
+            "R-tMGN",
+            "RtMGN"
+        ],
+        "definition": ""
+    },
+    "143": {
+        "aal_name": "Thal_PuI_L",
+        "full_name": "left pulvinar anterior",
+        "synonyms": [
+            "L-tPuA",
+            "LtPuA",
+            "tPuA_L"
+        ],
+        "definition": ""
+    },
+    "144": {
+        "aal_name": "Thal_PuI_R",
+        "full_name": "right pulvinar anterior",
+        "synonyms": [
+            "tPuA_R",
+            "RtPuA",
+            "R-tPuA"
+        ],
+        "definition": ""
+    },
+    "145": {
+        "aal_name": "Thal_PuM_L",
+        "full_name": "left pulvinar medial",
+        "synonyms": [
+            "LtPuM",
+            "tPuM_L",
+            "L-tPuM"
+        ],
+        "definition": ""
+    },
+    "146": {
+        "aal_name": "Thal_PuM_R",
+        "full_name": "right pulvinar medial",
+        "synonyms": [
+            "RtPuM",
+            "tPuM_R",
+            "R-tPuM"
+        ],
+        "definition": ""
+    },
+    "147": {
+        "aal_name": "Thal_PuA_L",
+        "full_name": "left pulvinar lateral",
+        "synonyms": [
+            "tPuL_L",
+            "L-tPuL",
+            "LtPuL"
+        ],
+        "definition": ""
+    },
+    "148": {
+        "aal_name": "Thal_PuA_R",
+        "full_name": "right pulvinar lateral",
+        "synonyms": [
+            "RtPuL",
+            "R-tPuL",
+            "tPuL_R"
+        ],
+        "definition": ""
+    },
+    "149": {
+        "aal_name": "Thal_PuL_L",
+        "full_name": "left pulvinar inferior",
+        "synonyms": [
+            "LtPuI",
+            "L-tPuI",
+            "tPuI_L"
+        ],
+        "definition": ""
+    },
+    "150": {
+        "aal_name": "Thal_PuL_R",
+        "full_name": "right pulvinar inferior",
+        "synonyms": [
+            "R-tPuI",
+            "RtPuI",
+            "tPuI_R"
+        ],
+        "definition": ""
+    },
+    "151": {
+        "aal_name": "ACC_sub_L",
+        "full_name": "left anterior cingulate cortex, subgenual",
+        "synonyms": [
+            "ACCsub_L",
+            "LACCsub",
+            "L-ACCsub"
+        ],
+        "definition": ""
+    },
+    "152": {
+        "aal_name": "ACC_sub_R",
+        "full_name": "right anterior cingulate cortex, subgenual",
+        "synonyms": [
+            "R-ACCsub",
+            "RACCsub",
+            "ACCsub_R"
+        ],
+        "definition": ""
+    },
+    "153": {
+        "aal_name": "ACC_pre_L",
+        "full_name": "left anterior cingulate cortex, pregenual",
+        "synonyms": [
+            "L-ACCpre",
+            "ACCpre_L",
+            "LACCpre"
+        ],
+        "definition": ""
+    },
+    "154": {
+        "aal_name": "ACC_pre_R",
+        "full_name": "right anterior cingulate cortex, pregenual",
+        "synonyms": [
+            "R-ACCpre",
+            "RACCpre",
+            "ACCpre_R"
+        ],
+        "definition": ""
+    },
+    "155": {
+        "aal_name": "ACC_sup_L",
+        "full_name": "left anterior cingulate cortex, supracallosal",
+        "synonyms": [
+            "ACCsup_L",
+            "LACCsup",
+            "L-ACCsup"
+        ],
+        "definition": ""
+    },
+    "156": {
+        "aal_name": "ACC_sup_R",
+        "full_name": "right anterior cingulate cortex, supracallosal",
+        "synonyms": [
+            "R-ACCsup",
+            "RACCsup",
+            "ACCsup_R"
+        ],
+        "definition": ""
+    },
+    "157": {
+        "aal_name": "N_Acc_L",
+        "full_name": "left nucleus accumbens",
+        "synonyms": [
+            "L-Nacc",
+            "LNacc",
+            "Nacc_L"
+        ],
+        "definition": ""
+    },
+    "158": {
+        "aal_name": "N_Acc_R",
+        "full_name": "right nucleus accumbens",
+        "synonyms": [
+            "Nacc_R",
+            "RNacc",
+            "R-Nacc"
+        ],
+        "definition": ""
+    },
+    "159": {
+        "aal_name": "VTA_L",
+        "full_name": "left ventral tegmental area",
+        "synonyms": [
+            "L-VTA",
+            "LVTA",
+            "VTA_L"
+        ],
+        "definition": ""
+    },
+    "160": {
+        "aal_name": "VTA_R",
+        "full_name": "right ventral tegmental area",
+        "synonyms": [
+            "R-VTA",
+            "RVTA",
+            "VTA_R"
+        ],
+        "definition": ""
+    },
+    "161": {
+        "aal_name": "SN_pc_L",
+        "full_name": "left substantia nigra, pars compacta",
+        "synonyms": [
+            "SNpc_L",
+            "LSNpc",
+            "L-SNpc"
+        ],
+        "definition": ""
+    },
+    "162": {
+        "aal_name": "SN_pc_R",
+        "full_name": "right substantia nigra, pars compacta",
+        "synonyms": [
+            "RSNpc",
+            "R-SNpc",
+            "SNpc_R"
+        ],
+        "definition": ""
+    },
+    "163": {
+        "aal_name": "SN_pr_L",
+        "full_name": "left substantia nigra, pars reticulata",
+        "synonyms": [
+            "LSNpr",
+            "SNpr_L",
+            "L-SNpr"
+        ],
+        "definition": ""
+    },
+    "164": {
+        "aal_name": "SN_pr_R",
+        "full_name": "right substantia nigra, pars reticulata",
+        "synonyms": [
+            "SNpr_R",
+            "RSNpr",
+            "R-SNpr"
+        ],
+        "definition": ""
+    },
+    "165": {
+        "aal_name": "Red_N_L",
+        "full_name": "left red nucleus",
+        "synonyms": [
+            "RedN_L",
+            "LRedN",
+            "L-RedN"
+        ],
+        "definition": ""
+    },
+    "166": {
+        "aal_name": "Red_N_R",
+        "full_name": "right red nucleus",
+        "synonyms": [
+            "RedN_R",
+            "RRedN",
+            "R-RedN"
+        ],
+        "definition": ""
+    },
+    "167": {
+        "aal_name": "LC_L",
+        "full_name": "left locus coeruleus",
+        "synonyms": [
+            "L-LC",
+            "LLC",
+            "LC_L"
+        ],
+        "definition": ""
+    },
+    "168": {
+        "aal_name": "LC_R",
+        "full_name": "right locus coeruleus",
+        "synonyms": [
+            "RLC",
+            "R-LC",
+            "LC_R"
+        ],
+        "definition": ""
+    },
+    "169": {
+        "aal_name": "Raphe_D",
+        "full_name": "midline raphe nucleus, dorsal",
+        "synonyms": [
+            "RapheD"
+        ],
+        "definition": ""
+    },
+    "170": {
+        "aal_name": "Raphe_M",
+        "full_name": "midline raphe nucleus, median",
+        "synonyms": [
+            "RapheM"
+        ],
+        "definition": ""
+    }
+}

@@ -1,0 +1,178 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+<title>File Viewer</title>
+
+<div id="bar">
+  <a href="/">&larr; Back to files</a>
+  <strong id="title">Loading files...</strong>
+</div>
+<div id="stage"></div>
+<div id="float"><div id="float-img"></div><div class="status" id="status"></div></div>
+<script type="module">
+  import * as pdfjsLib from '/vendor/pdfjs/pdf.mjs';
+  pdfjsLib.GlobalWorkerOptions.workerSrc = '/vendor/pdfjs/pdf.worker.mjs';
+
+  const params = new URLSearchParams(location.search);
+  const file = params.get('file');
+  const title = document.getElementById('title');
+  const stage = document.getElementById('stage');
+  const float = document.getElementById('float');
+
+  title.textContent = file || '(no file)';
+  document.title = file || 'File Viewer';
+
+  const fileUrl = '/files/' + encodeURIComponent(file || '');
+
+  if (/\.pdf$/i.test(file)) renderPdf(fileUrl);
+  else if (/\.html?$/i.test(file)) renderHtml(fileUrl);
+  else stage.textContent = 'Unsupported file type.';
+
+  async function renderPdf(url) {
+    const loadingTask = pdfjsLib.getDocument({ url });
+    const pdf = await loadingTask.promise;
+    const scale = 1.4;
+    for (let n = 1; n <= pdf.numPages; n++) {
+      const page = await pdf.getPage(n);
+      const viewport = page.getViewport({ scale });
+
+      const wrap = document.createElement('div');
+      wrap.className = 'page';
+      wrap.style.width = viewport.width + 'px';
+      wrap.style.height = viewport.height + 'px';
+
+      const canvas = document.createElement('canvas');
+      canvas.width = Math.floor(viewport.width);
+      canvas.height = Math.floor(viewport.height);
+      wrap.appendChild(canvas);
+
+      const textLayer = document.createElement('div');
+      textLayer.className = 'textLayer';
+      textLayer.style.width = viewport.width + 'px';
+      textLayer.style.height = viewport.height + 'px';
+      wrap.appendChild(textLayer);
+
+      stage.appendChild(wrap);
+
+      await page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
+      buildTextLayer(await page.getTextContent(), viewport, textLayer);
+    }
+    document.addEventListener('mouseup', () => onSelection(window.getSelection()));
+  }
+
+  function buildTextLayer(tc, viewport, container) {
+    const frag = document.createDocumentFragment();
+    for (const item of tc.items) {
+      if (!item.str) continue;
+      const tx = pdfjsLib.Util.transform(viewport.transform, item.transform);
+      const h = Math.hypot(tx[2], tx[3]);
+      const span = document.createElement('span');
+      span.textContent = item.str;
+      span.style.left = tx[4] + 'px';
+      span.style.top = (tx[5] - h) + 'px';
+      span.style.fontSize = h + 'px';
+      span.dataset.w = (item.width * viewport.scale) || 0;
+      frag.appendChild(span);
+    }
+    container.appendChild(frag);
+    for (const span of container.children) {
+      const target = parseFloat(span.dataset.w);
+      if (!target) continue;
+      const actual = span.getBoundingClientRect().width;
+      if (actual > 0) span.style.transform = `scaleX(${target / actual})`;
+    }
+  }
+
+  function renderHtml(url) {
+    const iframe = document.createElement('iframe');
+    iframe.id = 'html';
+    iframe.src = url;
+    stage.appendChild(iframe);
+    iframe.addEventListener('load', () => {
+      try {
+        const doc = iframe.contentDocument; 
+        doc.addEventListener('mouseup', () =>
+          onSelection(iframe.contentWindow.getSelection(), iframe));
+        doc.addEventListener('mousedown', e => {
+          if (!float.contains(e.target)) float.style.display = 'none';
+        });
+      } catch (e) {
+        console.warn('Cannot read iframe selection:', e);
+      }
+    });
+  }
+
+  let busy = false;
+  async function onSelection(sel, iframe) {
+    const text = ((sel && sel.toString()) || '').trim();
+    if (!text || busy) return;
+
+    let r;
+    try { r = sel.getRangeAt(0).getBoundingClientRect(); } catch { return; }
+    if (!r || (!r.width && !r.height)) return;
+
+    let rect = { left: r.left, top: r.top, width: r.width, height: r.height,
+                 bottom: r.bottom };
+    if (iframe) {//there was an iframe error in some browsers
+      const off = iframe.getBoundingClientRect();
+      rect = { left: r.left + off.left, top: r.top + off.top, width: r.width,
+               height: r.height, bottom: r.bottom + off.top };
+    }
+
+    busy = true;
+    showFloat(rect, null, 'generating…');
+    try {
+      const res = await fetch('/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text }),
+      });
+      const data = await res.json();
+      if (data.success) showFloat(rect, data.imageUrl);
+      else showFloat(rect, null, 'error: ' + (data.error || 'unknown'));
+    } catch (e) {
+      showFloat(rect, null, 'error: ' + e.message);
+    } finally {
+      busy = false;
+    }
+  }
+
+  function showFloat(rect, imageUrl, status) {
+    float.innerHTML = '';
+    if (status) {
+      const s = document.createElement('div');
+      s.className = 'status';
+      s.textContent = status;
+      float.appendChild(s);
+    }
+    if (imageUrl) {
+      const img = document.createElement('img');
+      img.src = imageUrl;
+      img.onload = () => position(rect);
+      img.onerror = () => { float.innerHTML = '<div class="status">image failed to load</div>'; position(rect); };
+      float.appendChild(img);
+    }
+    float.style.display = 'block';
+    position(rect);
+  }
+
+  function position(rect) {
+    const pad = 8;
+    const fw = float.offsetWidth || 200;
+    const fh = float.offsetHeight || 60;
+    let left = rect.left + rect.width / 2 - fw / 2;
+    let top = rect.top - fh - pad;                
+    if (top < pad) top = rect.bottom + pad;        
+    left = Math.max(pad, Math.min(left, window.innerWidth - fw - pad));
+    float.style.left = left + 'px';
+    float.style.top = top + 'px';
+  }
+
+  document.addEventListener('mousedown', e => {
+    if (!float.contains(e.target)) float.style.display = 'none';
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') float.style.display = 'none';
+  });
+</script>

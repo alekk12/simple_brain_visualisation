@@ -1,0 +1,21 @@
+{
+  "port": 3000,
+  "host": "localhost",
+  "max_input":4000,
+  "conda_model":"default",
+  "bert_model":"models/local_biobert",
+  "paths":{
+  "public_dir":"viewer",
+  "uploads_dir":"uploads",
+  "output_dir":"output",
+  "data_dir":"data",
+  "pdf_disp_dir":"node_modules/pdfjs-dist/build",
+  "model_loader":"models/load_model.py"
+  },
+  "model": {
+    "model_path": "models/local_biobert",
+    "embeddings_path": "models/embeddings.npy",
+    "atlas_type": "aal",
+    "top_regions": 5
+  }
+}
