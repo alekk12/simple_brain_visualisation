@@ -1,7 +1,9 @@
 # Brain Visualisation
-Local AI tool, based on finetuned BioBERT, for visualising different brain regions from text description.
+Based on finetuned BioBERT, for visualising different brain regions from text description.
 
-Setup
+Different NLP approaches are stored in the `helpers/experiments` directory.
+
+Setup to run the full visualisation (Node.js, conda/mamba required, cuda for faster execution)
 1. Clone or download the project.
 2. Start with this command in the root directory.
    ```python
@@ -113,10 +115,8 @@ The simple version of biobert, with embeddings based on AAL3v1 regions of the br
 ![alt text](image.png)
 
 The more complex version of biobert, trained on annotated PubMed abstracts. The dictionary comes from the AAL3v1 atlas with 170 unique brain regions.
-![alt text](image.png)
 
 The most complex model was trained on hierarchical embeddings. AAL atlas has brain regions that are extremely common (hippocampus) and others that are quite rare. The goal is to highlight the most relevant regions.
-![alt text](image.png)
 
 # References
 1. Medium NER tutorial [link](https://medium.com/@maneyogesh065/fine-tuning-biobert-for-custom-named-entity-recognition-a-complete-guide-a05b124edda0)

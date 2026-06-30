@@ -11,5 +11,11 @@
   "data_dir":"data",
   "pdf_disp_dir":"node_modules/pdfjs-dist/build",
   "model_loader":"models/load_model.py"
+  },
+  "model": {
+    "model_path": "models/local_biobert",
+    "embeddings_path": "models/embeddings.npy",
+    "atlas_type": "aal",
+    "top_regions": 5
   }
 }

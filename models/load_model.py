@@ -1,5 +1,4 @@
 import sys
-import os
 import re
 import json
 import torch
@@ -9,12 +8,19 @@ import nibabel as nib
 import matplotlib.pyplot as plt
 from transformers import AutoTokenizer, AutoModel
 from nilearn import datasets, plotting, image
-import matplotlib.pyplot as plt
 from pathlib import Path
 from matplotlib.patches import Patch
+from config_loader import load_config
+
+CONFIG = load_config()
 
 #TO DO fix hardcoded paths - read from config
-BASE_DIR = Path(__file__).resolve().parent
+#BASE_DIR = Path(CONFIG.paths.data_dir).resolve().parent
+
+def validate_path(path_obj, description):
+    """Validate that a path exists"""
+    if not Path(path_obj).exists():
+        raise ModelLoadError(f"{description} not found: {path_obj}")
 
 def get_bert_embedding(text, tokenizer, model, device="cuda"):
     inputs = tokenizer(text, return_tensors="pt", padding=True, truncation=True).to(device)
@@ -27,7 +33,9 @@ def get_bert_embedding(text, tokenizer, model, device="cuda"):
     return sum_embeddings / sum_mask
 
 
-def load_atlas(atlas_type, data_dir=f"{BASE_DIR.parent}/data"):
+def load_atlas(atlas_type, data_dir=None):
+    if data_dir is None:
+        data_dir = CONFIG["paths"]["data_dir"]
     if atlas_type == "schaefer":
         atlas = datasets.fetch_atlas_schaefer_2018(n_rois=200, data_dir=data_dir)
         return atlas.maps, atlas.labels, None, None
@@ -74,7 +82,9 @@ def find_top_n_regions(query, tokenizer, model, label_embs, atlas_labels, n=3, d
     top_vals, top_indices = torch.topk(sims, n)
     return [(atlas_labels[i], top_vals[j].item(), i) for j, i in enumerate(top_indices)]
 
-def visualize_probabilistic_results(top_results, atlas_maps, atlas_indices, out_path=f"{BASE_DIR.parent}/output/output.png"):
+def visualize_probabilistic_results(top_results, atlas_maps, atlas_indices, out_path=None):
+    if out_path is None:
+        out_path = f'{CONFIG["paths"]["output_dir"]}/output.png'
     #TO DO fix hardcoed paths
     num_regions = len(top_results)
     cmap = plt.colormaps["tab10"].resampled(num_regions)
@@ -101,8 +111,22 @@ def visualize_probabilistic_results(top_results, atlas_maps, atlas_indices, out_
     fig.savefig(out_path, bbox_inches="tight", dpi=300)
     plt.close(fig)
 
-def load_model(model_path=f"{BASE_DIR.parent}/models/local_biobert",emb_path=f"{BASE_DIR.parent}/models/embeddings.npy", comp=False,atlas_type="aal",top_reg=5):
-    """load model either from weights or fetch"""
+def load_model(
+    model_path=None,
+    emb_path=None,
+    atlas_type=None,
+    data_dir=None,
+    comp=False
+):
+    """Load model with config-driven defaults."""
+    if model_path is None:
+        model_path = CONFIG["model"]["model_path"]
+    if emb_path is None:
+        emb_path = CONFIG["model"]["embeddings_path"]
+    if atlas_type is None:
+        atlas_type = CONFIG["model"].get("atlas_type", "aal")
+    if data_dir is None:
+        data_dir = CONFIG["paths"]["data_dir"]
     device = "cuda" if torch.cuda.is_available() else "cpu"
     atlas_maps, atlas_labels, atl_dict, atlas_indices = load_atlas(atlas_type)
     tok = AutoTokenizer.from_pretrained(model_path)
@@ -122,10 +146,20 @@ def generate(model, tokenizer, embs, atlas_maps, atlas_labels, atlas_indices, qu
     visualize_probabilistic_results(top_result, atlas_maps, atlas_indices)
     return top_result[0]
 
-model, tok, embs, atlas_maps, atlas_labels, atlas_indices = load_model()
-for line in sys.stdin:
-    req = json.loads(line)
-    text = req["text"]
-    if len(text) > 1:
-        result = generate(model, tok, embs, atlas_maps, atlas_labels, atlas_indices, text)
-        print(json.dumps({"result": f"{result[0]} with prob={result[1]}"}), flush=True)
+if __name__ == "__main__":
+    #loading of the base model
+    model, tok, embs, atlas_maps, atlas_labels, atlas_indices = load_model()
+
+    #loading of other models
+
+    for line in sys.stdin:
+        try:
+            req = json.loads(line)
+            text = req["text"]
+            if len(text) > 1:
+                result = generate(model, tok, embs, atlas_maps, atlas_labels, atlas_indices, text)
+                print(json.dumps({"result": f"{result[0]} with prob={result[1]}"}), flush=True)
+        except json.JSONDecodeError as e:
+            print(json.dumps({"error": f"Invalid JSON: {str(e)}"}), flush=True)
+        except Exception as e:
+            print(json.dumps({"error": str(e)}), flush=True)

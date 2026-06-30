@@ -7,17 +7,8 @@ import { createCanvas } from "canvas";
 import {spawn} from "child_process";
 import {dirname, resolve} from "path";
 import { fileURLToPath } from "url";
-//import * as pdfjsLib from "pdfjs-dist/vendor/pdf.mjs";
-// const express = require('express');
-// const cors = require('cors');
-// const multer = require('multer');
-// const path = require('path');
-// const fs = require('fs');
-// const { createCanvas } = require("canvas");
-// const { spawn } = require("child_process");
 
 const ROOT_DIR = process.env.ROOT_DIR || resolve(dirname(fileURLToPath(import.meta.url)),"..")
-//path.resolve(__dirname, "..");
 
 const config = JSON.parse(
   fs.readFileSync(path.join(ROOT_DIR, "config.json"), "utf8")
@@ -49,6 +40,17 @@ for (const d of [config.paths.uploads_dir, config.paths.output_dir]) fs.mkdirSyn
 py.stdout.on("data", (d) => console.log("[py]", d.toString()));
 py.stderr.on("data", (d) => console.error("[py err]", d.toString()));
 
+// py.on("error", (err) => {
+//   console.error("[FATAL] Python process failed:", err);
+//   process.exit(1);
+// });
+
+// process.on("SIGTERM", () => {
+//   console.log("SIGTERM received, shutting down...");
+//   py.stdin.end();
+//   process.exit(0);
+// });
+
 const storage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, config.paths.uploads_dir),
   filename: (req, file, cb) => {
@@ -68,18 +70,26 @@ function loadModel(text, timeoutMs = 15000) {
 
     const timer = setTimeout(() => {
       py.stdout.removeListener("data", handler);
-      reject(new Error("Request to the model timed out"));
+      reject(new Error(`Model request timed out after ${timeoutMs}ms`));
     }, timeoutMs);
 
-    const handler = (chunk) => {
+const handler = (chunk) => {
       buffer += chunk.toString();
       if (buffer.includes("\n")) {
         try {
           const msg = JSON.parse(buffer.trim());
           clearTimeout(timer);
           py.stdout.removeListener("data", handler);
-          resolve(msg.result);
-        } catch (e) {
+          if (!msg.result && !msg.error) {
+            reject(new Error(`Invalid response format: ${buffer.trim()}`));
+          } else if (msg.error) {
+            reject(new Error(`Model error: ${msg.error}`));
+          } else {
+            resolve(msg.result);
+          }
+       } catch (e) {
+         console.error(`[ERROR] Failed to parse model response: ${e.message}`);
+         reject(e);
         }
       }
     };
@@ -89,11 +99,6 @@ function loadModel(text, timeoutMs = 15000) {
 }
 
 async function generateImage(text) {
-  //lazy loading
-  //const path = (await import("node:path")).default;
-  //const fs = (await import("node:fs")).default;
-  //const { createCanvas } = await import("canvas");
-
   const outPath = path.join(config.paths.output_dir, "output.png");
   const canvas = createCanvas(420, 180);
   const ctx = canvas.getContext("2d");

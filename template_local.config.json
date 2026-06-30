@@ -1,4 +1,9 @@
 {
-    "conda_model":".../python.exe",
-    "bert_model":"./models/local_biobert"
+  "conda_model": ".../python.exe",
+  "bert_model": "./models/local_biobert",
+  "model": {
+    "model_path": "models/local_biobert",
+    "embeddings_path": "models/embeddings.npy",
+    "atlas_type": "aal"
+  }
 }
