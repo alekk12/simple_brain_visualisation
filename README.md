@@ -39,14 +39,73 @@ The uploaded data includes the following elements.
 * Annotated brain regions connl file for NER finetuning with either *B-Brain* or *O* annotations (`annotated_brain_regions.connl`)
 
 # Data preprocessing
+The main question is what brain regions should be used for text extraction and later visualisation. There are the major parts (cerebrum, brainstem, cerebellum), lobes (frontal, temporal, parietal, occipital), individual structures (hippocampus, amygdala). Each region can be subdivided into smaller parts, there are different networks (DMN) and systems.
 
+Each atlas for visualisations has a different naming system and split, with AAL3v1 and schaeffer being the most commonly used for brain regions. Most of the experiments in the repository have focues on either structures of the brain or aal atlas regions.
+
+During the data preprocessing part, new dictionaries and connections were generated, and stored in the data folder.
 # Experiments
 The `helper\experiments` folder contains Jupyter notebooks with experiments and different approaches to the given problem.
-* `brain_text_detection.ipynb`: the simplest approach
-* `ner_tutorial.ipynb` based on medical NER tutorial
-* `finetune.ipynb` finetuning
+## `brain_text_detection.ipynb`: the simplest approach
+## `ner_tutorial.ipynb` based on medical NER tutorial
+The brain regions used in the notebook are the most common ones, they do not come from any atlas or dictionary. First, the model was trained to recognize whether the text is brain related or not, based on PubMED abstracts fetched for the list of regions.
+<table>
+ <tr style="text-align: left;">
+      <th>Epoch</th>
+      <th>Training Loss</th>
+      <th>Validation Loss</th>
+      <th>Precision</th>
+      <th>Recall</th>
+      <th>F1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>No log</td>
+      <td>0.282965</td>
+      <td>0.201717</td>
+      <td>0.256831</td>
+      <td>0.225962</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>No log</td>
+      <td>0.154976</td>
+      <td>0.426724</td>
+      <td>0.540984</td>
+      <td>0.477108</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>No log</td>
+      <td>0.122615</td>
+      <td>0.542373</td>
+      <td>0.699454</td>
+      <td>0.610979</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>No log</td>
+      <td>0.100538</td>
+      <td>0.666667</td>
+      <td>0.765027</td>
+      <td>0.712468</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>No log</td>
+      <td>0.095848</td>
+      <td>0.669725</td>
+      <td>0.797814</td>
+      <td>0.728180</td>
+    </tr>
+  </tbody>
+</table>
 
-# Models
+## `brain2qwerty` and how it connects with hierarchy of brain regions
+
+# Final Models
 Normally the embeddings and safetensors would not be uploaded, and ignored, but they were uploaded using LFS for convenience.
    
 # Results
@@ -65,3 +124,7 @@ The most complex model was trained on hierarchical embeddings. AAL atlas has bra
 3. How to choose tools for unique BioNER need [link](https://www.sciencedirect.com/org/science/article/pii/S1874120724000031)
 4. BioSERPBERT repository of neuroscience representation of brain region text mining [link](https://github.com/Brainsmatics/BioSEPBERT)
 5. Connectivity search engine with different connected embeddings [link](http://atlas.brainsmatics.org/res/BioSEPBERT/)
+6. Data fetching tutorial [link](https://biopython.org/docs/dev/Tutorial/chapter_entrez.html)
+7. Token classification [link](https://huggingface.co/learn/llm-course/chapter7/2)
+8. Brain2Qwerty [link](https://github.com/facebookresearch/brain2qwerty)
+9. Noninvasive decoding of typed sentences from human brain activity [link](https://www.nature.com/articles/s41593-026-02303-2)
