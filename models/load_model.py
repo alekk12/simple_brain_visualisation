@@ -23,6 +23,7 @@ def validate_path(path_obj, description):
         raise ModelLoadError(f"{description} not found: {path_obj}")
 
 def get_bert_embedding(text, tokenizer, model, device="cuda"):
+    """Outputs simple token embeddings for bert"""
     inputs = tokenizer(text, return_tensors="pt", padding=True, truncation=True).to(device)
     with torch.no_grad():
         outputs = model(**inputs)
@@ -34,6 +35,7 @@ def get_bert_embedding(text, tokenizer, model, device="cuda"):
 
 
 def load_atlas(atlas_type, data_dir=None):
+    """Loading of brain region atlas, currently best to use with aal"""
     if data_dir is None:
         data_dir = CONFIG["paths"]["data_dir"]
     if atlas_type == "schaefer":
@@ -77,12 +79,14 @@ def compute_label_embeddings_optimized(labels, atl_dict, tokenizer, model, devic
     return torch.cat(label_embeddings, dim=0)
 
 def find_top_n_regions(query, tokenizer, model, label_embs, atlas_labels, n=3, device="cuda"):
+    """Return top `n` brain regions"""
     query_emb = get_bert_embedding(query, tokenizer, model, device)
     sims = F.cosine_similarity(query_emb, label_embs)
     top_vals, top_indices = torch.topk(sims, n)
     return [(atlas_labels[i], top_vals[j].item(), i) for j, i in enumerate(top_indices)]
 
 def visualize_probabilistic_results(top_results, atlas_maps, atlas_indices, out_path=None):
+    """Visuaise the probability of each region on the brain using the chosen atlas"""
     if out_path is None:
         out_path = f'{CONFIG["paths"]["output_dir"]}/output.png'
     #TO DO fix hardcoed paths

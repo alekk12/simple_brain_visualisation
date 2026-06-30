@@ -3,11 +3,7 @@ from pathlib import Path
 import os
 
 def load_config():
-    """Load config.json and merge with local.config.json (if exists).
-    
-    Returns:
-        dict: Configuration with resolved absolute paths
-    """
+    """Load config.json and merge with local.config.json (if exists)."""
     root_dir = Path(__file__).resolve().parent.parent
     config_path = root_dir / "config.json"
     with open(config_path) as f:
@@ -25,7 +21,7 @@ def load_config():
                 config["model"][key] = str(
                     root_dir / config["model"][key]
                 )
-                    
+
     if "paths" in config:
         for key in ["data_dir", "output_dir"]:
             if key in config["paths"]:
